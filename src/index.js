@@ -7,13 +7,23 @@ import * as serviceWorker from './serviceWorker';
 import createSagaMiddleware from 'redux-saga';
 import logger from 'redux-logger'
 import koalaSaga from './redux/koalaSaga'
+import koalaListReducer from './redux/koalaListReducer';
+import {createStore, applyMiddleware} from 'redux';
+import { all } from 'redux-saga/effects';
 
 const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(
-    rootReducer,
+    koalaListReducer,
     applyMiddleware(logger)
 )
+
+function* rootSaga() {
+    yield all([
+        koalaSaga(),
+      
+    ]);
+}
 
 sagaMiddleware.run(rootSaga)
 
