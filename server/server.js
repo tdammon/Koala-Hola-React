@@ -27,7 +27,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 /* Routes */
-app.use('koala', koalaRouter);
+app.use('/koala', koalaRouter);
 
 // Serve static files
 app.use(express.static('build'));
