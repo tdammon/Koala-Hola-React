@@ -31,7 +31,7 @@ const styles = theme => ({
 
 class KoalaList extends Component {
   state = {
-  
+    
   };
 
       componentDidMount() {
@@ -44,13 +44,25 @@ class KoalaList extends Component {
               });
             }
 
-    renderTransferBtn = (koala) => {
+    updateData = (koalaId) => {
+        console.log(koalaId);
+        this.props.dispatch({
+            type: 'UPDATE_KOALAS',
+            payload: koalaId
+        });
+    }
+
+    renderTransferBtn = (koala, koalaId) => {
+         this.props.dispatch({
+             type: 'UPDATE_KOALAS'
+         });
         if(koala) {
-            return (<p>true</p>)
+            return (<p>TRUE</p>)
         } else {
-            return (<Button>Transfer</Button>)
+            return (<Button variant= 'raised' onClick = {
+                        () => this.updateData(koalaId)
+                    }>Transfer</Button>)
         }
-        
     }
 
   
@@ -74,11 +86,11 @@ class KoalaList extends Component {
         {this.props.reduxState.map(koala => {
           return(
             <TableRow className={classes.row} key={koala._id} >
-              <TableCell>{koala.name}</TableCell>
-              <TableCell>{koala.gender}</TableCell>
-              <TableCell>{koala.age}</TableCell>
-               <TableCell style={{textAlign: 'center'}}>{this.renderTransferBtn(koala.readyForTransfer)}</TableCell>
-                <TableCell>{koala.notes}</TableCell>
+            <TableCell>{koala.name}</TableCell>
+            <TableCell>{koala.gender}</TableCell>
+            <TableCell>{koala.age}</TableCell>
+            <TableCell style={{textAlign: 'center'}}>{this.renderTransferBtn(koala.readyForTransfer, koala._id)}</TableCell>
+            <TableCell>{koala.notes}</TableCell>
             </TableRow>
           )
         })}
