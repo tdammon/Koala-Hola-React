@@ -53,9 +53,6 @@ class KoalaList extends Component {
     }
 
     renderTransferBtn = (koala, koalaId) => {
-         this.props.dispatch({
-             type: 'UPDATE_KOALAS'
-         });
         if(koala) {
             return (<p>TRUE</p>)
         } else {

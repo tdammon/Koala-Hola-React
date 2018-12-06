@@ -23,9 +23,20 @@ function* addKoala(action) {
    }
 }
 
+function* updateKoala(action){
+   try {
+      yield call(axios.put, `/koala/${action.payload}`);
+      yield put({type: 'GET_KOALAS'});
+   }
+   catch {
+
+   }
+}
+
 function* koalaSaga() {
     yield takeLatest('GET_KOALAS', getKoalas);
     yield takeLatest('ADD_KOALA', addKoala);
+    yield takeLatest('UPDATE_KOALAS', updateKoala);
 }
 
 export default koalaSaga;

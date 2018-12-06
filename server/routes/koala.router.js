@@ -44,4 +44,24 @@ router.post('/', (req, res) => {
       })
 })
 
+// Update koala ready to transfer status
+router.put('/:id', (req, res) => {
+   let koalaId = req.params.id;
+   Koala.findOneAndUpdate({
+      _id: koalaId
+   },
+   {
+      $set: {
+         "readyForTransfer": true
+      }
+   })
+   .then((results) => {
+      res.sendStatus(201)
+   })
+   .catch((error) => {
+      res.sendStatus(501)
+   })
+})
+
+
 module.exports = router;
