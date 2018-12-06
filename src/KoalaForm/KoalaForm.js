@@ -44,9 +44,18 @@ class KoalaForm extends Component{
                         required
                         />
                         <Radio
-                        label="transfer"
+                        label="Yes"
                         name="transfer"
-                        value={this.state.transfer}
+                        value= {true}
+                        onChange={this.handleChange}
+                        variant="outlined"
+                        margin="normal"
+                        required
+                        />
+                        <Radio
+                        label="No"
+                        name="transfer"
+                        value= {false}
                         onChange={this.handleChange}
                         variant="outlined"
                         margin="normal"
@@ -61,6 +70,7 @@ class KoalaForm extends Component{
                         margin="normal"
                         required
                         />
+                        
                     </FormControl>
                 </FormGroup>
             </div>
