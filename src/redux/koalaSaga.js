@@ -13,8 +13,19 @@ function* getKoalas(action) {
     }
 }
 
+function* addKoala(action) {
+   try {
+      yield call(axios.post, '/koala', action.payload);
+      yield put({type: 'GET_KOALAS'});
+   }
+   catch (error) {
+      console.log(`POST request to /koala UNSUCCESSFUL...`, error);
+   }
+}
+
 function* koalaSaga() {
-    yield takeLatest('GET_KOALAS', getKoalas)
+    yield takeLatest('GET_KOALAS', getKoalas);
+    yield takeLatest('ADD_KOALA', addKoala);
 }
 
 export default koalaSaga;
