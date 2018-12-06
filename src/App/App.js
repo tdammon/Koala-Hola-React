@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import KoalaList from '../KoalaList/KoalaList'
+import KoalaForm from '../KoalaForm/KoalaForm';
 
 class App extends Component {
   render() {
@@ -22,6 +23,7 @@ class App extends Component {
           </a>
         </header> */}
         <KoalaList/>
+      <KoalaForm />
       </div>
     );
   }

@@ -31,4 +31,17 @@ router.get('/', (req,res) => {
     
 })
 
+// POST new Koala
+
+router.post('/', (req, res) => {
+   const payload = req.body;
+   Koala.create(payload)
+      .then((results) =>{
+         res.sendStatus(200)
+      })
+      .catch((error) => {
+         console.log('Error posting to db: ', error)
+      })
+})
+
 module.exports = router;
