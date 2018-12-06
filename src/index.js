@@ -13,9 +13,14 @@ import { all } from 'redux-saga/effects';
 
 const sagaMiddleware = createSagaMiddleware();
 
+const middlewareList = process.env.NODE_ENV === 'development' ?
+  [sagaMiddleware, logger] :
+  [sagaMiddleware];
+
 const store = createStore(
     koalaListReducer,
-    applyMiddleware(logger)
+    applyMiddleware(...middlewareList),
+    
 )
 
 function* rootSaga() {
@@ -23,6 +28,7 @@ function* rootSaga() {
         koalaSaga(),
       
     ]);
+    
 }
 
 sagaMiddleware.run(rootSaga)
