@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 
 // Mongoose Connection
 
-const databaseUrl = 'mongodb://27017/koala';
+const databaseUrl = 'mongodb://localhost:27017/koala';
 mongoose.connect(databaseUrl, {useNewUrlParser: true});
 
 mongoose.connection.once('connected', () => {
